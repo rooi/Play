@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -438,8 +438,8 @@ public class SongSelectSceneControl : MonoBehaviour, INeedInjection, IBinder, IT
 
     private void UpdateSongDurationLabel(double durationInMillis)
     {
-        int min = (int)Math.Floor(durationInMillis / 1000 / 60);
-        int seconds = (int)Math.Floor((durationInMillis / 1000) % 60);
+        int min = (int)System.Math.Floor(durationInMillis / 1000 / 60);
+        int seconds = (int)System.Math.Floor((durationInMillis / 1000) % 60);
         durationLabel.text = $"{min}:{seconds.ToString().PadLeft(2, '0')}";
     }
 

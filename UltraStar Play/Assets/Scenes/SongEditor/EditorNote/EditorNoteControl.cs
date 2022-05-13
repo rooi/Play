@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System; UniRx.ObservableExtensions conflict
 using System.Collections.Generic;
 using PrimeInputActions;
 using UniInject;
@@ -91,7 +91,7 @@ public class EditorNoteControl : INeedInjection, IInjectionFinishedListener
 
     private float lastClickTime;
 
-    private readonly List<IDisposable> disposables = new();
+    private readonly List<System.IDisposable> disposables = new();
 
     private EditorNoteContextMenuControl contextMenuControl;
 

@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System; UniRx.ObservableExtensions conflict
 using UniInject;
 using UniRx;
 using UnityEngine.UIElements;
@@ -29,9 +29,9 @@ public class TextInputDialogControl : AbstractDialogControl, IInjectionFinishedL
     protected BackslashReplacingTextFieldControl backslashReplacingTextFieldControl;
 
     private readonly Subject<string> submitValueEventStream = new();
-    public IObservable<string> SubmitValueEventStream => submitValueEventStream;
+    public System.IObservable<string> SubmitValueEventStream => submitValueEventStream;
 
-    public Func<string, ValueInputDialogValidationResult> ValidateValueCallback { get; set; } = DefaultValidateValueCallback;
+    public System.Func<string, ValueInputDialogValidationResult> ValidateValueCallback { get; set; } = DefaultValidateValueCallback;
 
     public string Title
     {

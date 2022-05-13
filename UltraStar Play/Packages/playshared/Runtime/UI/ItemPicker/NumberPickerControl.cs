@@ -1,12 +1,12 @@
-using System;
+//using System; UniRx.ObservableExtensions conflict
 using System.Globalization;
 using UniRx;
 using UnityEngine.InputSystem;
 
 public class NumberPickerControl : ComputedItemPickerControl<double>
 {
-    private Func<double, string> getLabelTextFunction = item => item.ToString(CultureInfo.InvariantCulture);
-    public Func<double, string> GetLabelTextFunction
+    private System.Func<double, string> getLabelTextFunction = item => item.ToString(CultureInfo.InvariantCulture);
+    public System.Func<double, string> GetLabelTextFunction
     {
         get
         {

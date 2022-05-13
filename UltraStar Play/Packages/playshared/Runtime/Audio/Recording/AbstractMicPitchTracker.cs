@@ -1,5 +1,5 @@
 ﻿
-using System;
+//using System; UniRx.ObservableExtensions conflict
 using UniInject;
 using UniRx;
 using UnityEngine;
@@ -38,7 +38,7 @@ public abstract class AbstractMicPitchTracker : MonoBehaviour, INeedInjection, I
     public MicSampleRecorder MicSampleRecorder { get; protected set; }
 
     protected readonly Subject<PitchEvent> pitchEventStream = new();
-    public IObservable<PitchEvent> PitchEventStream => pitchEventStream;
+    public System.IObservable<PitchEvent> PitchEventStream => pitchEventStream;
 
     public IAudioSamplesAnalyzer AudioSamplesAnalyzer { get; private set; }
 

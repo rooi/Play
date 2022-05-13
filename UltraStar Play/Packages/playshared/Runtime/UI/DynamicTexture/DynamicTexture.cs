@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System; UniRx.ObservableExtensions conflict
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
@@ -149,8 +149,8 @@ public class DynamicTexture
 
         // Bresenham algorithm to draw lines.
         // See https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm
-        int dx = Math.Abs(bx - ax), sx = ax < bx ? 1 : -1;
-        int dy = -Math.Abs(by - ay), sy = ay < by ? 1 : -1;
+        int dx = System.Math.Abs(bx - ax), sx = ax < bx ? 1 : -1;
+        int dy = -System.Math.Abs(by - ay), sy = ay < by ? 1 : -1;
         int err = dx + dy, e2; /* error value e_xy */
 
         while (true)
@@ -189,14 +189,14 @@ public class DynamicTexture
 
         // r is the radius of the capsule. Thus, use half the thickness.
         float r = thickness / 2;
-        int x0 = (int)Mathf.Floor(Math.Min(ax, bx) - r);
+        int x0 = (int)Mathf.Floor(System.Math.Min(ax, bx) - r);
         x0 = NumberUtils.Limit(x0, 0, TextureWidth - 1);
-        int x1 = (int)Mathf.Ceil(Math.Max(ax, bx) + r);
+        int x1 = (int)Mathf.Ceil(System.Math.Max(ax, bx) + r);
         x1 = NumberUtils.Limit(x1, 0, TextureWidth - 1);
 
-        int y0 = (int)Mathf.Floor(Math.Min(ay, by) - r);
+        int y0 = (int)Mathf.Floor(System.Math.Min(ay, by) - r);
         y0 = NumberUtils.Limit(y0, 0, TextureHeight - 1);
-        int y1 = (int)Mathf.Ceil(Math.Max(ay, by) + r);
+        int y1 = (int)Mathf.Ceil(System.Math.Max(ay, by) + r);
         y1 = NumberUtils.Limit(y1, 0, TextureHeight - 1);
 
         for (int y = y0; y <= y1; y++)

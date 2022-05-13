@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -77,7 +77,7 @@ public class SongEditorSceneControl : MonoBehaviour, IBinder, INeedInjection, II
     [Inject]
     private ApplicationManager applicationManager;
 
-    private IDisposable autoSaveDisposable;
+    private System.IDisposable autoSaveDisposable;
 
     private readonly SongMetaChangeEventStream songMetaChangeEventStream = new();
 
@@ -197,7 +197,7 @@ public class SongEditorSceneControl : MonoBehaviour, IBinder, INeedInjection, II
 
         autoSaveDisposable = songMetaChangeEventStream
             // When there has been no new event for a second, then save
-            .Throttle(new TimeSpan(0, 0, 0, 0, 500))
+            .Throttle(new System.TimeSpan(0, 0, 0, 0, 500))
             .Subscribe(evt => DoAutoSaveIfEnabled())
             .AddTo(gameObject);
     }
@@ -326,7 +326,7 @@ public class SongEditorSceneControl : MonoBehaviour, IBinder, INeedInjection, II
             // Write the song data structure to the file.
             UltraStarSongFileWriter.WriteFile(songFile, SongMeta);
         }
-        catch (Exception e)
+        catch (System.Exception e)
         {
             Debug.LogException(e);
             uiManager.CreateNotificationVisualElement("Saving the file failed:\n" + e.Message);
@@ -408,7 +408,7 @@ public class SongEditorSceneControl : MonoBehaviour, IBinder, INeedInjection, II
         }
     }
 
-    public void CreateNumberInputDialog(string title, string message, Action<float> useNumberCallback)
+    public void CreateNumberInputDialog(string title, string message, System.Action<float> useNumberCallback)
     {
         void UseValueCallback(string text)
         {
@@ -441,7 +441,7 @@ public class SongEditorSceneControl : MonoBehaviour, IBinder, INeedInjection, II
         string title,
         string message,
         string initialValue,
-        Action<string> usePathCallback)
+        System.Action<string> usePathCallback)
     {
         void UseValueCallback(string path)
         {

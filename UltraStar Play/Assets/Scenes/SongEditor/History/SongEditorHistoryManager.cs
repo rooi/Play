@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System; UniRx.ObservableExtensions conflict
 using System.Collections.Generic;
 using System.Linq;
 using UniInject;
@@ -42,7 +42,7 @@ public class SongEditorHistoryManager : MonoBehaviour, INeedInjection, ISceneInj
         songMetaChangeEventStream
             .Where(evt => IsUndoable(evt))
             // When there is no new change to the song for some time, then record an undo-state.
-            .Throttle(new TimeSpan(0, 0, 0, 0, 500))
+            .Throttle(new System.TimeSpan(0, 0, 0, 0, 500))
             .Subscribe(_ => AddUndoState())
             .AddTo(gameObject);
     }

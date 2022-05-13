@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System;
 using PrimeInputActions;
 using UniInject;
 using UniRx;
@@ -29,7 +29,7 @@ public class SongSelectSceneInputControl : MonoBehaviour, INeedInjection
     private VisualElement inputLegendContainer;
 
     private readonly ReactiveProperty<string> fuzzySearchText = new("");
-    public IObservable<string> FuzzySearchText => fuzzySearchText;
+    public System.IObservable<string> FuzzySearchText => fuzzySearchText;
     private float fuzzySearchLastInputTimeInSeconds;
     private static readonly float fuzzySearchResetTimeInSeconds = 0.75f;
     

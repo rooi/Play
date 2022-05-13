@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System;
 using System.Collections.Generic;
 using System.Linq;
 using UniInject;
@@ -161,7 +161,7 @@ public class CharacterQuickJumpListControl : MonoBehaviour, INeedInjection
 
     public SongMeta GetCharacterQuickJumpSongMeta(char character)
     {
-        Predicate<char> matchPredicate;
+        System.Predicate<char> matchPredicate;
         if (char.IsLetterOrDigit(character))
         {
             // Jump to song starts with character

@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System; UniRx.ObservableExtensions conflict
 using System.Collections.Generic;
 using UniInject;
 using UniRx;
@@ -67,8 +67,8 @@ public class SongVideoPlayer : MonoBehaviour, INeedInjection, IInjectionFinished
 
     private float nextSyncTimeInSeconds;
 
-    private IDisposable jumpBackInSongEventStreamDisposable;
-    private IDisposable jumpForwardInSongEventStreamDisposable;
+    private System.IDisposable jumpBackInSongEventStreamDisposable;
+    private System.IDisposable jumpForwardInSongEventStreamDisposable;
 
     public string videoPlayerErrorMessage;
 
@@ -242,7 +242,7 @@ public class SongVideoPlayer : MonoBehaviour, INeedInjection, IInjectionFinished
 
         // A short mismatch in video and song position is smoothed out by adjusting the playback speed of the video.
         // A big mismatch is corrected immediately.
-        if (forceImmediateSync || Math.Abs(timeDifferenceInSeconds) > 2)
+        if (forceImmediateSync || System.Math.Abs(timeDifferenceInSeconds) > 2)
         {
             // Correct the mismatch immediately.
             videoPlayer.time = targetPositionInVideoInSeconds;

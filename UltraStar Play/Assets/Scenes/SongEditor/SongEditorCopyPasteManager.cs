@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System;
 using System.Collections.Generic;
 using System.Linq;
 using PrimeInputActions;
@@ -89,7 +89,7 @@ public class SongEditorCopyPasteManager : MonoBehaviour, INeedInjection
             return;
         }
 
-        int newBeat = (int)Math.Round(BpmUtils.MillisecondInSongToBeat(songMeta, newMillis));
+        int newBeat = (int)System.Math.Round(BpmUtils.MillisecondInSongToBeat(songMeta, newMillis));
         int minBeat = CopiedNotes.Select(it => it.StartBeat).Min();
         int distanceInBeats = newBeat - minBeat;
         if (distanceInBeats == 0)

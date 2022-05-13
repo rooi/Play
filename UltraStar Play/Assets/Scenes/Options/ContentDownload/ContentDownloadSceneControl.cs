@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System; UniRx.ObservableExtensions conflict
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -136,7 +136,7 @@ public class ContentDownloadSceneControl : MonoBehaviour, INeedInjection, ITrans
 
     private string GetDownloadTargetPath(string url)
     {
-        Uri uri = new(url);
+        System.Uri uri = new(url);
         string filename = Path.GetFileName(uri.LocalPath);
         string targetPath = ApplicationManager.PersistentTempPath() + "/" + filename;
         return targetPath;
@@ -221,14 +221,14 @@ public class ContentDownloadSceneControl : MonoBehaviour, INeedInjection, ITrans
             {
                 progress = downloadRequest.downloadProgress;
             }
-            catch (Exception ex)
+            catch (System.Exception ex)
             {
                 Debug.LogException(ex);
                 AddToUiLog(ex.Message);
                 statusLabel.text = "?";
                 yield break;
             }
-            string progressText = Math.Round(progress * 100) + "%";
+            string progressText = System.Math.Round(progress * 100) + "%";
             statusLabel.text = progressText;
             yield return new WaitForSeconds(0.1f);
         }
@@ -286,15 +286,15 @@ public class ContentDownloadSceneControl : MonoBehaviour, INeedInjection, ITrans
             }
             else
             {
-                long size = Convert.ToInt64(contentLength);
+                long size = System.Convert.ToInt64(contentLength);
                 long kiloByte = size / 1024;
                 if (kiloByte > 1024)
                 {
-                    fileSize.text = Math.Round((double)kiloByte / 1024) + " MB";
+                    fileSize.text = System.Math.Round((double)kiloByte / 1024) + " MB";
                 }
                 else
                 {
-                    fileSize.text = Math.Round((double)kiloByte) + " KB";
+                    fileSize.text = System.Math.Round((double)kiloByte) + " KB";
                 }
             }
         }
@@ -343,7 +343,7 @@ public class ContentDownloadSceneControl : MonoBehaviour, INeedInjection, ITrans
 
             poolHandle.done = true;
         }
-        catch (Exception ex)
+        catch (System.Exception ex)
         {
             AddToDebugAndUiLog($"Unpacking failed: {ex.Message}");
             SetErrorStatus();
@@ -379,7 +379,7 @@ public class ContentDownloadSceneControl : MonoBehaviour, INeedInjection, ITrans
             archive.ExtractContents(targetFolder);
             poolHandle.done = true;
         }
-        catch (Exception ex)
+        catch (System.Exception ex)
         {
             AddToDebugAndUiLog($"Unpacking failed: {ex.Message}");
             SetErrorStatus();

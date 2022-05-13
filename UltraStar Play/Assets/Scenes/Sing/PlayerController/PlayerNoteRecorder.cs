@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System; UniRx.ObservableExtensions conflict
 using UniInject;
 using UniRx;
 using UnityEngine;
@@ -18,7 +18,7 @@ public class PlayerNoteRecorder : MonoBehaviour, INeedInjection, IInjectionFinis
     private BeatAnalyzedEvent lastBeatAnalyzedEvent;
 
     private readonly Subject<RecordedNoteStartedEvent> recordedNoteStartedEventStream = new();
-    public IObservable<RecordedNoteStartedEvent> RecordedNoteStartedEventStream
+    public System.IObservable<RecordedNoteStartedEvent> RecordedNoteStartedEventStream
     {
         get
         {
@@ -27,7 +27,7 @@ public class PlayerNoteRecorder : MonoBehaviour, INeedInjection, IInjectionFinis
     }
 
     private readonly Subject<RecordedNoteContinuedEvent> recordedNoteContinuedEventStream = new();
-    public IObservable<RecordedNoteContinuedEvent> RecordedNoteContinuedEventStream
+    public System.IObservable<RecordedNoteContinuedEvent> RecordedNoteContinuedEventStream
     {
         get
         {

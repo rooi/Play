@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System; UniRx.ObservableExtensions conflict
 using System.Collections.Generic;
 using UniInject;
 using UniRx;
@@ -19,7 +19,7 @@ public class CalibrateMicDelayControl : MonoBehaviour, INeedInjection
     public MicProfile MicProfile { get; set; }
 
     private readonly Subject<CalibrationResult> calibrationResultEventStream = new();
-    public IObservable<CalibrationResult> CalibrationResultEventStream => calibrationResultEventStream;
+    public System.IObservable<CalibrationResult> CalibrationResultEventStream => calibrationResultEventStream;
 
     [Inject(SearchMethod = SearchMethods.GetComponentInChildren)]
     private AudioSource audioSource;

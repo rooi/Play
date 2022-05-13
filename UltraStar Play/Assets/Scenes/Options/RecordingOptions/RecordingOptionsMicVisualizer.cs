@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System; UniRx.ObservableExtensions conflict
 using ProTrans;
 using UniInject;
 using UniRx;

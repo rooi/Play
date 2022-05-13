@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System;
 using System.Collections.Generic;
 using System.Linq;
 using UniInject;
@@ -58,7 +58,7 @@ public class PlayerScoreController : MonoBehaviour, INeedInjection, IInjectionFi
             double score = (double)MaxPerfectSentenceBonusScore * ScoreData.PerfectSentenceCount / targetSentenceCount;
 
             // Round the score up
-            score = Math.Ceiling(score);
+            score = System.Math.Ceiling(score);
             if (score > MaxPerfectSentenceBonusScore)
             {
                 score = MaxPerfectSentenceBonusScore;
@@ -76,7 +76,7 @@ public class PlayerScoreController : MonoBehaviour, INeedInjection, IInjectionFi
     private Voice voice;
 
     private readonly Subject<SentenceScoreEvent> sentenceScoreEventStream = new();
-    public IObservable<SentenceScoreEvent> SentenceScoreEventStream
+    public System.IObservable<SentenceScoreEvent> SentenceScoreEventStream
     {
         get
         {
@@ -85,7 +85,7 @@ public class PlayerScoreController : MonoBehaviour, INeedInjection, IInjectionFi
     }
 
     private readonly Subject<NoteScoreEvent> noteScoreEventStream = new();
-    public IObservable<NoteScoreEvent> NoteScoreEventStream
+    public System.IObservable<NoteScoreEvent> NoteScoreEventStream
     {
         get
         {
@@ -251,7 +251,7 @@ public class PlayerScoreController : MonoBehaviour, INeedInjection, IInjectionFi
 
         // Countercheck: The sum of all points must be equal to MaxScoreForNotes
         double pointsForAllNotes = maxScoreForNormalNotes + maxScoreForGoldenNotes;
-        bool isSound = Math.Abs(MaxScoreForNotes - pointsForAllNotes) <= 0.01;
+        bool isSound = System.Math.Abs(MaxScoreForNotes - pointsForAllNotes) <= 0.01;
         if (!isSound)
         {
             Debug.LogWarning("The definition of scores for normal or golden notes is not sound: "
@@ -259,8 +259,8 @@ public class PlayerScoreController : MonoBehaviour, INeedInjection, IInjectionFi
         }
 
         // Round the values for the max score of normal / golden notes to avoid floating point inaccuracy.
-        maxScoreForNormalNotes = Math.Ceiling(maxScoreForNormalNotes);
-        maxScoreForGoldenNotes = Math.Ceiling(maxScoreForGoldenNotes);
+        maxScoreForNormalNotes = System.Math.Ceiling(maxScoreForNormalNotes);
+        maxScoreForGoldenNotes = System.Math.Ceiling(maxScoreForGoldenNotes);
         // The sum of the rounded points must not exceed the MaxScoreForNotes.
         // If the definition is sound then the overhang is at most 2 because of the above rounding.
         int overhang = (int)(maxScoreForNormalNotes + maxScoreForGoldenNotes) - MaxScoreForNotes;

@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System; UniRx.ObservableExtensions conflict
 using PrimeInputActions;
 using UniInject;
 using UniRx;
@@ -11,7 +11,7 @@ public class ContextMenuControl : INeedInjection, IInjectionFinishedListener
 {
     private static readonly Vector2 popupOffset = new(2, 2);
 
-    public Action<ContextMenuPopupControl> FillContextMenuAction { get; set; }
+    public System.Action<ContextMenuPopupControl> FillContextMenuAction { get; set; }
 
     [Inject(Key = Injector.RootVisualElementInjectionKey)]
     protected VisualElement targetVisualElement;

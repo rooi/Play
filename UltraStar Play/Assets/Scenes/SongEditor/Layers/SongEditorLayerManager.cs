@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System; UniRx.ObservableExtensions conflict
 using System.Collections.Generic;
 using System.Linq;
 using UniInject;
@@ -19,7 +19,7 @@ public class SongEditorLayerManager : MonoBehaviour, INeedInjection, ISceneInjec
     private Settings settings;
 
     private readonly Subject<LayerChangedEvent> layerChangedEventStream = new();
-    public IObservable<LayerChangedEvent> LayerChangedEventStream => layerChangedEventStream;
+    public System.IObservable<LayerChangedEvent> LayerChangedEventStream => layerChangedEventStream;
 
     public void OnSceneInjectionFinished()
     {

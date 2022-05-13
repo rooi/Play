@@ -1,4 +1,4 @@
-using System;
+//using System;
 using System.Collections.Generic;
 using System.Linq;
 using ProTrans;
@@ -58,7 +58,7 @@ public class SongSearchControl : INeedInjection, IInjectionFinishedListener, ITr
     private HashSet<ESearchProperty> searchProperties = new();
 
     private readonly Subject<SearchChangedEvent> searchChangedEventStream = new();
-    public IObservable<SearchChangedEvent> SearchChangedEventStream => searchChangedEventStream;
+    public System.IObservable<SearchChangedEvent> SearchChangedEventStream => searchChangedEventStream;
 
     public void OnInjectionFinished()
     {

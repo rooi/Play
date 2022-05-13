@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System;
 using System.Collections.Generic;
 using System.Linq;
 using UniInject;
@@ -202,7 +202,7 @@ public class SongPreviewControl : MonoBehaviour, INeedInjection
         {
             songAudioPlayer.Init(songMeta);
         }
-        catch (Exception ex)
+        catch (System.Exception ex)
         {
             Debug.LogException(ex);
             string errorMessage = $"Audio could not be loaded (artist: {songMeta.Artist}, title: {songMeta.Title})";

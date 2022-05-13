@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System;
 using System.Collections.Generic;
 using System.Linq;
 using ProTrans;
@@ -49,7 +49,7 @@ public class SongRouletteControl : MonoBehaviour, INeedInjection, ITranslator
     public IReactiveProperty<SongSelection> Selection { get; private set; } = new ReactiveProperty<SongSelection>();
 
     private readonly Subject<SongSelection> selectionClickedEventStream = new();
-    public IObservable<SongSelection> SelectionClickedEventStream => selectionClickedEventStream;
+    public System.IObservable<SongSelection> SelectionClickedEventStream => selectionClickedEventStream;
 
     public int SongEntryPlaceholderCount => songEntryPlaceholderControls.Count;
 
@@ -372,7 +372,7 @@ public class SongRouletteControl : MonoBehaviour, INeedInjection, ITranslator
         AnimTimeInSeconds = MaxAnimTimeInSeconds - AnimTimeInSeconds;
     }
 
-    public SongMeta Find(Predicate<SongMeta> predicate)
+    public SongMeta Find(System.Predicate<SongMeta> predicate)
     {
         return songs.Find(predicate);
     }

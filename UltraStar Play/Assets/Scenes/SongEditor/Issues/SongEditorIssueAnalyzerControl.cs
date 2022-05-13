@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System; UniRx.ObservableExtensions conflict
 using System.Collections.Generic;
 using UniInject;
 using UniRx;
@@ -15,7 +15,7 @@ public class SongEditorIssueAnalyzerControl : INeedInjection, IInjectionFinished
     private NoteAreaControl noteAreaControl;
 
     private readonly Subject<IReadOnlyCollection<SongIssue>> issuesEventStream = new();
-    public IObservable<IReadOnlyCollection<SongIssue>> IssuesEventStream => issuesEventStream;
+    public System.IObservable<IReadOnlyCollection<SongIssue>> IssuesEventStream => issuesEventStream;
 
     private int lastIssueCount;
 
@@ -24,7 +24,7 @@ public class SongEditorIssueAnalyzerControl : INeedInjection, IInjectionFinished
         UpdateIssues();
         songMetaChangeEventStream
             // When there is no new change to the song for some time, then update the issues.
-            .Throttle(new TimeSpan(0, 0, 0, 0, 500))
+            .Throttle(new System.TimeSpan(0, 0, 0, 0, 500))
             .Subscribe(_ => UpdateIssues());
     }
 

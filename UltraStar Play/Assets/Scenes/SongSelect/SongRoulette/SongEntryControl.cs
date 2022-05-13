@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +12,7 @@ using UnityEngine.UIElements;
 // Disable warning about fields that are never assigned, their values are injected.
 #pragma warning disable CS0649
 
-public class SongEntryControl : INeedInjection, IDragListener<GeneralDragEvent>, ISlotListItem, IInjectionFinishedListener, ITranslator, IDisposable
+public class SongEntryControl : INeedInjection, IDragListener<GeneralDragEvent>, ISlotListItem, IInjectionFinishedListener, ITranslator, System.IDisposable
 {
     [Inject]
     private SongRouletteControl songRouletteControl;
@@ -82,7 +82,7 @@ public class SongEntryControl : INeedInjection, IDragListener<GeneralDragEvent>,
     public bool IsSongMenuOverlayVisible => songOverlayMenu.IsVisibleByDisplay();
 
     public readonly Subject<bool> clickEventStream = new();
-    public IObservable<bool> ClickEventStream => clickEventStream;
+    public System.IObservable<bool> ClickEventStream => clickEventStream;
 
     private bool ignoreNextClickEvent;
 

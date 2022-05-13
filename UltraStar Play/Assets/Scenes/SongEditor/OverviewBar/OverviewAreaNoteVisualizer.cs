@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System; UniRx.ObservableExtensions conflict
 using System.Collections.Generic;
 using System.Linq;
 using UniInject;
@@ -77,7 +77,7 @@ public class OverviewAreaNoteVisualizer : INeedInjection, IInjectionFinishedList
             return;
         }
 
-        int songDurationInMillis = (int)Math.Ceiling(songAudioPlayer.AudioClip.length * 1000);
+        int songDurationInMillis = (int)System.Math.Ceiling(songAudioPlayer.AudioClip.length * 1000);
 
         // constant offset to
         // (a) ensure that midiNoteRange > 0,

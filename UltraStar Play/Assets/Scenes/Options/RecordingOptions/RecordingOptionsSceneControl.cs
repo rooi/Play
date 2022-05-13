@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System;
 using System.Collections.Generic;
 using System.Linq;
 using PrimeInputActions;
@@ -98,10 +98,10 @@ public class RecordingOptionsSceneControl : MonoBehaviour, INeedInjection, ITran
 
     private MicProfile SelectedMicProfile => devicePickerControl.SelectedItem;
 
-    private IDisposable connectedClientReceivedMessageStreamDisposable;
+    private System.IDisposable connectedClientReceivedMessageStreamDisposable;
 
     private readonly Subject<BeatPitchEvent> connectedClientBeatPitchEventStream = new();
-    public IObservable<BeatPitchEvent> ConnectedClientBeatPitchEventStream => connectedClientBeatPitchEventStream;
+    public System.IObservable<BeatPitchEvent> ConnectedClientBeatPitchEventStream => connectedClientBeatPitchEventStream;
 
     private void Start()
     {

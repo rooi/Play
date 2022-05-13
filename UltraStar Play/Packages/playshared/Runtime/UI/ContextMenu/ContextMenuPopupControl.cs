@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System; UniRx.ObservableExtensions conflict
 using System.Collections.Generic;
 using System.Linq;
 using PrimeInputActions;
@@ -37,7 +37,7 @@ public class ContextMenuPopupControl : INeedInjection, IInjectionFinishedListene
     private readonly GameObject gameObject;
     private readonly Vector2 position;
 
-    private IDisposable closeContextMenuDisposable;
+    private System.IDisposable closeContextMenuDisposable;
 
     private Vector2 lastSize;
     private Vector2 lastPosition;
@@ -111,7 +111,7 @@ public class ContextMenuPopupControl : INeedInjection, IInjectionFinishedListene
         visualElement.Add(contextMenuItemVisualElement);
     }
 
-    public void AddItem(string text, Action action)
+    public void AddItem(string text, System.Action action)
     {
         VisualElement contextMenuItemVisualElement = contextMenuPopupManager.contextMenuItemUi.CloneTree().Children().First();
         ContextMenuItemControl contextMenuItem = new(text, action);

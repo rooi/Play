@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -140,7 +140,7 @@ public class SongEditorSideBarPropertiesControl : INeedInjection, IInjectionFini
         });
     }
 
-    private void CreateSongPropertiesInputControl(ESongProperty songProperty, string labelText, Func<string> valueGetter, Action<string> valueSetter)
+    private void CreateSongPropertiesInputControl(ESongProperty songProperty, string labelText, System.Func<string> valueGetter, System.Action<string> valueSetter)
     {
         VisualElement visualElement = songPropertySideBarEntryUi.CloneTree().Children().First();
         songPropertiesSideBarContainer.Add(visualElement);
@@ -206,7 +206,7 @@ public class SongEditorSideBarPropertiesControl : INeedInjection, IInjectionFini
         public TextField TextField { get; set; }
         public Label Label { get; set; }
         public string LabelText { get; set; }
-        public Func<string> ValueGetter { get; set; }
-        public Action<string> ValueSetter { get; set; }
+        public System.Func<string> ValueGetter { get; set; }
+        public System.Action<string> ValueSetter { get; set; }
     }
 }

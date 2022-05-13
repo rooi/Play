@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System;
 using System.Collections.Generic;
 using System.Linq;
 using UniInject;
@@ -279,7 +279,7 @@ public class SongEditorSideBarSettingsControl : INeedInjection, IInjectionFinish
 
     private void SetMusicPlaybackSpeed(float newValue)
     {
-        float newValueRounded = (float)Math.Round(newValue, 1);
+        float newValueRounded = (float)System.Math.Round(newValue, 1);
         if (Mathf.Abs(newValueRounded - 1) < 0.1)
         {
             // Round to exactly 1 to eliminate manipulation of playback speed. Otherwise there will be noise in the audio.
@@ -290,7 +290,7 @@ public class SongEditorSideBarSettingsControl : INeedInjection, IInjectionFinish
         songAudioPlayer.PlaybackSpeed = newValueRounded;
     }
 
-    private void Bind<T>(BaseField<T> baseField, Func<T> valueGetter, Action<T> valueSetter, bool observeValueGetter = true)
+    private void Bind<T>(BaseField<T> baseField, System.Func<T> valueGetter, System.Action<T> valueSetter, bool observeValueGetter = true)
     {
         baseField.value = valueGetter();
         baseField.RegisterValueChangedCallback(evt => valueSetter(evt.newValue));

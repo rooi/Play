@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System; UniRx.ObservableExtensions conflict
 using System.Collections.Generic;
 using System.Linq;
 using UniInject;
@@ -98,7 +98,7 @@ public class NoteAreaControl : INeedInjection, IInjectionFinishedListener
     private PanelHelper panelHelper;
 
     private readonly Subject<ViewportEvent> viewportEventStream = new();
-    public IObservable<ViewportEvent> ViewportEventStream => viewportEventStream;
+    public System.IObservable<ViewportEvent> ViewportEventStream => viewportEventStream;
 
     private float lastClickTime;
     private Vector2 lastClickPosition;
@@ -200,8 +200,8 @@ public class NoteAreaControl : INeedInjection, IInjectionFinishedListener
         minBeat = NumberUtils.Limit(minBeat, 0, maxBeat);
         double minPositionInMillis = BpmUtils.BeatToMillisecondsInSong(songMeta, minBeat);
         double maxPositionInMillis = BpmUtils.BeatToMillisecondsInSong(songMeta, maxBeat);
-        int newViewportX = (int)Math.Floor(minPositionInMillis);
-        int newViewportWidth = (int)Math.Ceiling(maxPositionInMillis - minPositionInMillis);
+        int newViewportX = (int)System.Math.Floor(minPositionInMillis);
+        int newViewportWidth = (int)System.Math.Ceiling(maxPositionInMillis - minPositionInMillis);
         SetViewportHorizontal(newViewportX, newViewportWidth);
     }
 
@@ -441,8 +441,8 @@ public class NoteAreaControl : INeedInjection, IInjectionFinishedListener
         ViewportX = newViewportX;
         MinMillisecondsInViewport = ViewportX;
         MaxMillisecondsInViewport = ViewportX + ViewportWidth;
-        MinBeatInViewport = (int)Math.Floor(BpmUtils.MillisecondInSongToBeat(songMeta, MinMillisecondsInViewport));
-        MaxBeatInViewport = (int)Math.Ceiling(BpmUtils.MillisecondInSongToBeat(songMeta, MaxMillisecondsInViewport));
+        MinBeatInViewport = (int)System.Math.Floor(BpmUtils.MillisecondInSongToBeat(songMeta, MinMillisecondsInViewport));
+        MaxBeatInViewport = (int)System.Math.Ceiling(BpmUtils.MillisecondInSongToBeat(songMeta, MaxMillisecondsInViewport));
     }
 
     private void SetViewportYWithoutChangeEvent(int newViewportY)
@@ -490,7 +490,7 @@ public class NoteAreaControl : INeedInjection, IInjectionFinishedListener
 
         ViewportWidth = newViewportWidth;
         MaxMillisecondsInViewport = ViewportX + ViewportWidth;
-        MaxBeatInViewport = (int)Math.Ceiling(BpmUtils.MillisecondInSongToBeat(songMeta, MaxMillisecondsInViewport));
+        MaxBeatInViewport = (int)System.Math.Ceiling(BpmUtils.MillisecondInSongToBeat(songMeta, MaxMillisecondsInViewport));
     }
 
     private void FireViewportChangedEvent()
@@ -551,14 +551,14 @@ public class NoteAreaControl : INeedInjection, IInjectionFinishedListener
         {
             int startOfFirstNoteInMillis = GetStartOfFirstNoteInMillis();
             songAudioPlayer.PositionInSongInMillis = startOfFirstNoteInMillis;
-            x = Math.Max(0, startOfFirstNoteInMillis - 1000);
+            x = System.Math.Max(0, startOfFirstNoteInMillis - 1000);
         }
         else
         {
-            x = Math.Max(0, (int)songAudioPlayer.PositionInSongInMillis - 1000);
+            x = System.Math.Max(0, (int)songAudioPlayer.PositionInSongInMillis - 1000);
         }
         // Full range of notes. At least one octave
-        int height = Math.Max(12, maxMidiNote - minMidiNote + 2);
+        int height = System.Math.Max(12, maxMidiNote - minMidiNote + 2);
         // Center the notes
         int y = minMidiNote - 1;
         SetViewport(x, y, width, height);
@@ -596,19 +596,19 @@ public class NoteAreaControl : INeedInjection, IInjectionFinishedListener
     public int ScreenPixelPositionToMillis(float x)
     {
         Rect rect = VisualElement.worldBound;
-        return (int)Math.Round(ViewportX + ViewportWidth * ((x - rect.x) / rect.width));
+        return (int)System.Math.Round(ViewportX + ViewportWidth * ((x - rect.x) / rect.width));
     }
 
     public int ScreenPixelPositionToBeat(float x)
     {
         Rect rect = VisualElement.worldBound;
-        return (int)Math.Round(MinBeatInViewport + ViewportWidthInBeats * ((x - rect.x) / rect.width));
+        return (int)System.Math.Round(MinBeatInViewport + ViewportWidthInBeats * ((x - rect.x) / rect.width));
     }
 
     public int ScreenPixelPositionToMidiNote(float y)
     {
         Rect rect = VisualElement.worldBound;
-        return (int)Math.Round(MinMidiNoteInCurrentViewport + ViewportHeight * (1 - (y - rect.y) / rect.height));
+        return (int)System.Math.Round(MinMidiNoteInCurrentViewport + ViewportHeight * (1 - (y - rect.y) / rect.height));
     }
 
     private void UpdatePositionInSongIndicator(double positionInSongInMillis)

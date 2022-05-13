@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -298,7 +298,7 @@ public class SingSceneControl : MonoBehaviour, INeedInjection, IBinder
             playerUiContainer.style.flexDirection = new StyleEnum<FlexDirection>(FlexDirection.Row);
 
             // Create columns
-            int columnCount = (int)Math.Sqrt(playerCount);
+            int columnCount = (int)System.Math.Sqrt(playerCount);
             playerUiColumns = new VisualElement[columnCount];
             for (int i = 0; i < columnCount; i++)
             {
@@ -460,7 +460,7 @@ public class SingSceneControl : MonoBehaviour, INeedInjection, IBinder
 
     public void SkipToPositionInSong(double positionInSongInMillis)
     {
-        int nextBeatToScore = (int)Math.Max(CurrentBeat, sceneData.NextBeatToScore);
+        int nextBeatToScore = (int)System.Math.Max(CurrentBeat, sceneData.NextBeatToScore);
         Debug.Log($"Skipping forward to {positionInSongInMillis} milliseconds, next beat to score is {nextBeatToScore}");
         songAudioPlayer.PositionInSongInMillis = positionInSongInMillis;
         foreach (PlayerControl playerController in PlayerControls)
@@ -481,7 +481,7 @@ public class SingSceneControl : MonoBehaviour, INeedInjection, IBinder
         int maxBeatToScore = PlayerControls
             .Select(playerController => playerController.PlayerScoreController.NextBeatToScore)
             .Max();
-        SceneData.NextBeatToScore = Math.Max((int)CurrentBeat, maxBeatToScore);
+        SceneData.NextBeatToScore = System.Math.Max((int)CurrentBeat, maxBeatToScore);
 
         SceneData.PlayerProfileToScoreDataMap = new Dictionary<PlayerProfile, PlayerScoreControllerData>();
         foreach (PlayerControl playerController in PlayerControls)

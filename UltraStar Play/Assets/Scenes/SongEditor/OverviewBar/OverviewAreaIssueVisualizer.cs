@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System;
 using System.Collections.Generic;
 using UniInject;
 using UniRx;
@@ -67,7 +67,7 @@ public class OverviewAreaIssueVisualizer : INeedInjection, IInjectionFinishedLis
 
         Color color = SongIssueUtils.GetColorForIssue(issue);
 
-        int songDurationInMillis = (int)Math.Ceiling(songAudioPlayer.AudioClip.length * 1000);
+        int songDurationInMillis = (int)System.Math.Ceiling(songAudioPlayer.AudioClip.length * 1000);
 
         int startMillis = (int)BpmUtils.BeatToMillisecondsInSong(songMeta, issue.StartBeat);
         int endMillis = (int)BpmUtils.BeatToMillisecondsInSong(songMeta, issue.EndBeat);

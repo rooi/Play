@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System;
 using System.Collections.Generic;
 using System.Linq;
 using PrimeInputActions;
@@ -240,7 +240,7 @@ public class SongEditorSceneInputControl : MonoBehaviour, INeedInjection
 
         EKeyboardModifier modifier = InputUtils.GetCurrentKeyboardModifier();
 
-        int scrollDirection = Math.Sign(context.ReadValue<Vector2>().y);
+        int scrollDirection = System.Math.Sign(context.ReadValue<Vector2>().y);
         if (scrollDirection != 0 && noteAreaControl.IsPointerOver())
         {
             // Scroll horizontal in NoteArea with no modifier
@@ -408,16 +408,16 @@ public class SongEditorSceneInputControl : MonoBehaviour, INeedInjection
         // Zoom when difference to start distance is above threshold.
         Vector2 distancePerDimension = DistancePerDimension(firstFinger.screenPosition, secondFinger.screenPosition);
         Vector2 distanceDifference = distancePerDimension - zoomStartTouchDistancePerDimension;
-        if (Math.Abs(distanceDifference.x) > PinchGestureMagnitudeThresholdInPixels
-            || Math.Abs(distanceDifference.y) > PinchGestureMagnitudeThresholdInPixels)
+        if (System.Math.Abs(distanceDifference.x) > PinchGestureMagnitudeThresholdInPixels
+            || System.Math.Abs(distanceDifference.y) > PinchGestureMagnitudeThresholdInPixels)
         {
-            if (Math.Abs(distanceDifference.x) > PinchGestureMagnitudeThresholdInPixels)
+            if (System.Math.Abs(distanceDifference.x) > PinchGestureMagnitudeThresholdInPixels)
             {
-                noteAreaControl.ZoomHorizontal(Math.Sign(distanceDifference.x));
+                noteAreaControl.ZoomHorizontal(System.Math.Sign(distanceDifference.x));
             }
-            if (Math.Abs(distanceDifference.y) > PinchGestureMagnitudeThresholdInPixels)
+            if (System.Math.Abs(distanceDifference.y) > PinchGestureMagnitudeThresholdInPixels)
             {
-                noteAreaControl.ZoomVertical(Math.Sign(distanceDifference.y));
+                noteAreaControl.ZoomVertical(System.Math.Sign(distanceDifference.y));
             }
             
             zoomStartTouchPositions = new Vector2[] { firstFinger.screenPosition, secondFinger.screenPosition };
@@ -427,7 +427,7 @@ public class SongEditorSceneInputControl : MonoBehaviour, INeedInjection
 
     private Vector2 DistancePerDimension(Vector2 a, Vector2 b)
     {
-        return new Vector2(Math.Abs(a.x - b.x), Math.Abs(a.y - b.y));
+        return new Vector2(System.Math.Abs(a.x - b.x), System.Math.Abs(a.y - b.y));
     }
     
     // Implements keyboard shortcuts similar to Yass.

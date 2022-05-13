@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System; UniRx.ObservableExtensions conflict
 using System.Collections.Generic;
 using System.Linq;
 using CircularBuffer;
@@ -60,13 +60,13 @@ public class PlayerMicPitchTracker : MonoBehaviour, INeedInjection
     public int usedJokerCount;
 
     private readonly Subject<BeatAnalyzedEvent> beatAnalyzedEventStream = new();
-    public IObservable<BeatAnalyzedEvent> BeatAnalyzedEventStream => beatAnalyzedEventStream;
+    public System.IObservable<BeatAnalyzedEvent> BeatAnalyzedEventStream => beatAnalyzedEventStream;
 
     private readonly Subject<NoteAnalyzedEvent> noteAnalyzedEventStream = new();
-    public IObservable<NoteAnalyzedEvent> NoteAnalyzedEventStream => noteAnalyzedEventStream;
+    public System.IObservable<NoteAnalyzedEvent> NoteAnalyzedEventStream => noteAnalyzedEventStream;
 
     private readonly Subject<SentenceAnalyzedEvent> sentenceAnalyzedEventStream = new();
-    public IObservable<SentenceAnalyzedEvent> SentenceAnalyzedEventStream => sentenceAnalyzedEventStream;
+    public System.IObservable<SentenceAnalyzedEvent> SentenceAnalyzedEventStream => sentenceAnalyzedEventStream;
 
     private int lastAnalyzedBeatFromConnectedClient;
 
@@ -403,7 +403,7 @@ public class PlayerMicPitchTracker : MonoBehaviour, INeedInjection
     {
         double beatInMs = BpmUtils.BeatToMillisecondsInSong(songMeta, beat);
         double beatPassedBeforeMs = songAudioPlayer.PositionInSongInMillis - beatInMs;
-        int beatPassedBeforeSamplesInMicBuffer = Convert.ToInt32(((beatPassedBeforeMs - micProfile.DelayInMillis) / 1000) * micSampleRecorder.FinalSampleRate.Value);
+        int beatPassedBeforeSamplesInMicBuffer = System.Convert.ToInt32(((beatPassedBeforeMs - micProfile.DelayInMillis) / 1000) * micSampleRecorder.FinalSampleRate.Value);
         // The newest sample has the highest index in the MicSampleBuffer
         int sampleBufferIndex = micSampleRecorder.MicSamples.Length - beatPassedBeforeSamplesInMicBuffer;
         sampleBufferIndex = NumberUtils.Limit(sampleBufferIndex, 0, micSampleRecorder.MicSamples.Length - 1);

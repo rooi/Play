@@ -1,4 +1,4 @@
-using System;
+//using System; UniRx.ObservableExtensions conflict
 using System.Collections.Generic;
 using System.Linq;
 using PrimeInputActions;
@@ -10,7 +10,7 @@ using UnityEngine.UIElements;
 // Disable warning about fields that are never assigned, their values are injected.
 #pragma warning disable CS0649
 
-public abstract class AbstractDragControl<EVENT> : INeedInjection, IInjectionFinishedListener, IDisposable
+public abstract class AbstractDragControl<EVENT> : INeedInjection, IInjectionFinishedListener, System.IDisposable
 {
     private readonly List<IDragListener<EVENT>> dragListeners = new();
 
@@ -33,7 +33,7 @@ public abstract class AbstractDragControl<EVENT> : INeedInjection, IInjectionFin
 
     protected PanelHelper panelHelper;
 
-    private readonly List<IDisposable> disposables = new();
+    private readonly List<System.IDisposable> disposables = new();
 
     public IReadOnlyCollection<int> ButtonFilter { get; set; } = new List<int> { 0, 1, 2 };
 
@@ -163,7 +163,7 @@ public abstract class AbstractDragControl<EVENT> : INeedInjection, IInjectionFin
         NotifyListeners(listener => listener.CancelDrag(), false);
     }
 
-    protected void NotifyListeners(Action<IDragListener<EVENT>> action, bool includeCanceledListeners)
+    protected void NotifyListeners(System.Action<IDragListener<EVENT>> action, bool includeCanceledListeners)
     {
         foreach (IDragListener<EVENT> listener in dragListeners.ToList())
         {

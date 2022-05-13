@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System;
 using UniRx;
 
 public abstract class AbstractItemPickerControl<T>
@@ -29,7 +29,7 @@ public abstract class AbstractItemPickerControl<T>
         }
     }
 
-    public void Bind(Func<T> getter, Action<T> setter)
+    public void Bind(System.Func<T> getter, System.Action<T> setter)
     {
         Selection.Value = getter.Invoke();
         Selection.Subscribe(newValue => setter.Invoke(newValue));

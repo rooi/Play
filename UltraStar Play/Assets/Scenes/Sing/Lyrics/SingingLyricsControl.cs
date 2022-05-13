@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System; UniRx.ObservableExtensions conflict
 using System.Collections.Generic;
 using System.Linq;
 using UniInject;
@@ -70,7 +70,7 @@ public class SingingLyricsControl : INeedInjection, IInjectionFinishedListener
             : 0;
         double firstNoteStartBeatInMillis = BpmUtils.BeatToMillisecondsInSong(songMeta, CurrentSentence.MinBeat);
 
-        if (Math.Abs(firstNoteStartBeatInMillis - previousSentenceEndInMillis) < 500)
+        if (System.Math.Abs(firstNoteStartBeatInMillis - previousSentenceEndInMillis) < 500)
         {
             positionBeforeLyricsIndicator.HideByDisplay();
             return;

@@ -1,4 +1,4 @@
-using System;
+//using System; UniRx.ObservableExtensions conflict
 using System.Collections.Generic;
 using System.Linq;
 using UniInject;
@@ -29,10 +29,10 @@ public class FocusableNavigator : MonoBehaviour, INeedInjection
     protected VisualElement lastFocusedVisualElement;
 
     protected readonly Subject<NoNavigationTargetFoundEvent> noNavigationTargetFoundEventStream = new();
-    public IObservable<NoNavigationTargetFoundEvent> NoNavigationTargetFoundEventStream => noNavigationTargetFoundEventStream;
+    public System.IObservable<NoNavigationTargetFoundEvent> NoNavigationTargetFoundEventStream => noNavigationTargetFoundEventStream;
 
     protected readonly Subject<NoSubmitTargetFoundEvent> noSubmitTargetFoundEventStream = new();
-    public IObservable<NoSubmitTargetFoundEvent> NoSubmitTargetFoundEventStream => noSubmitTargetFoundEventStream;
+    public System.IObservable<NoSubmitTargetFoundEvent> NoSubmitTargetFoundEventStream => noSubmitTargetFoundEventStream;
 
     public virtual void Start()
     {

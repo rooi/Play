@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System; UniRx.ObservableExtensions conflict
 using UniInject;
 using UniRx;
 using UnityEngine;
@@ -98,7 +98,7 @@ public class NoteAreaHorizontalRulerControl : INeedInjection, IInjectionFinished
         int drawStepRough = viewportWidthInBeats / 12;
         if (viewportWidthInBeats <= 256)
         {
-            drawStepRough = Math.Max(1, (int)Math.Log10(viewportWidthInBeats) * 8);
+            drawStepRough = System.Math.Max(1, (int)System.Math.Log10(viewportWidthInBeats) * 8);
         }
 
         int drawStepFine = 0;
@@ -147,7 +147,7 @@ public class NoteAreaHorizontalRulerControl : INeedInjection, IInjectionFinished
         int drawStepRough = viewportWidthInBeats / 12;
         if (viewportWidthInBeats <= 256)
         {
-            drawStepRough = Math.Max(1, (int)Math.Log10(viewportWidthInBeats) * 8);
+            drawStepRough = System.Math.Max(1, (int)System.Math.Log10(viewportWidthInBeats) * 8);
         }
 
         if (viewportWidthInBeats <= 48)

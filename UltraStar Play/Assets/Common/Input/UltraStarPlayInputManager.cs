@@ -1,4 +1,4 @@
-using System;
+//using System; UniRx.ObservableExtensions conflict
 using System.Collections.Generic;
 using System.Linq;
 using PrimeInputActions;
@@ -31,7 +31,7 @@ public class UltraStarPlayInputManager : InputManager, INeedInjection
     public VectorImage touchIcon;
 
     private readonly Subject<InputDeviceChangeEvent> inputDeviceChangeEventStream = new();
-    public IObservable<InputDeviceChangeEvent> InputDeviceChangeEventStream => inputDeviceChangeEventStream;
+    public System.IObservable<InputDeviceChangeEvent> InputDeviceChangeEventStream => inputDeviceChangeEventStream;
 
     private EInputDevice inputDeviceEnum = GetDefaultInputDeviceEnum();
     public EInputDevice InputDeviceEnum {
@@ -69,7 +69,7 @@ public class UltraStarPlayInputManager : InputManager, INeedInjection
             // Enable EnhancedTouchSupport to make use of EnhancedTouch.Touch struct etc.
             EnhancedTouchSupport.Enable();
         }
-        catch (Exception e)
+        catch (System.Exception e)
         {
             Log.Logger.Error(e, "Could not enable enhanced touch support");
         }

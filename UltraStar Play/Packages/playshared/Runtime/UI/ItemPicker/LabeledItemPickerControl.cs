@@ -1,4 +1,4 @@
-﻿using System;
+﻿//using System; UniRx.ObservableExtensions conflict
 using System.Collections.Generic;
 using UniRx;
 
@@ -6,9 +6,9 @@ public class LabeledItemPickerControl<T> : ListedItemPickerControl<T>
 {
     private readonly string smallFontUssClass = "smallFont";
 
-    private Func<T, string> getLabelTextFunction = item => item != null ? item.ToString() : "";
+    private System.Func<T, string> getLabelTextFunction = item => item != null ? item.ToString() : "";
 
-    public Func<T, string> GetLabelTextFunction
+    public System.Func<T, string> GetLabelTextFunction
     {
         get
         {
