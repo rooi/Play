@@ -777,6 +777,7 @@ PlayerSettings:
     Android: OS_MUTEX
     Standalone: OS_MUTEX
     iPhone: OS_MUTEX
+    tvOS: OS_MUTEX
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}
